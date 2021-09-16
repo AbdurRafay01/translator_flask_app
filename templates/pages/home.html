@@ -1,0 +1,35 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<div class="">
+  <h1>Enter text</h1>
+</div>
+{% endblock %}
+
+{% block text_input %}
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Enter first Language</span>
+        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" onkeyup="">
+      </div>
+      <div class="mb-3">
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+    </div>
+    <div class="col">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Enter second Language</span>
+        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+      <div class="mb-3">
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+    </div>
+    
+  </div>
+</div>
+{% endblock %}

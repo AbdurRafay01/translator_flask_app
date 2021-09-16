@@ -2,7 +2,8 @@
 # Imports
 #----------------------------------------------------------------------------#
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash
+from flask_socketio import SocketIO, send, emit
 # from flask.ext.sqlalchemy import SQLAlchemy
 import logging
 from logging import Formatter, FileHandler
@@ -14,8 +15,10 @@ import os
 #----------------------------------------------------------------------------#
 
 app = Flask(__name__)
-app.config.from_object('config')
+app.config['SECRET_KEY'] = 'secret!'
+# app.config.from_object('config')
 #db = SQLAlchemy(app)
+socketio = SocketIO(app)
 
 # Automatically tear down SQLAlchemy.
 '''
@@ -40,37 +43,19 @@ def login_required(test):
 # Controllers.
 #----------------------------------------------------------------------------#
 
-
 @app.route('/')
 def home():
-    return render_template('pages/placeholder.home.html')
-
-
-@app.route('/about')
-def about():
-    return render_template('pages/placeholder.about.html')
-
-
-@app.route('/login')
-def login():
-    form = LoginForm(request.form)
-    return render_template('forms/login.html', form=form)
-
-
-@app.route('/register')
-def register():
-    form = RegisterForm(request.form)
-    return render_template('forms/register.html', form=form)
-
-
-@app.route('/forgot')
-def forgot():
-    form = ForgotForm(request.form)
-    return render_template('forms/forgot.html', form=form)
-
+    print("Hello world")
+    return render_template('pages/home.html')
 # Error handlers.
 
+@socketio.on('my event')
+def handle_msg(data):
+    print("received message : ", data)
 
+
+
+#error handling
 @app.errorhandler(500)
 def internal_error(error):
     #db_session.rollback()
@@ -97,7 +82,7 @@ if not app.debug:
 
 # Default port:
 if __name__ == '__main__':
-    app.run()
+    socketio.run(app)
 
 # Or specify port manually:
 '''
