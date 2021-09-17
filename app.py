@@ -2,6 +2,7 @@
 # Imports
 #----------------------------------------------------------------------------#
 
+from typing import Text
 from flask import Flask, render_template, request, flash
 from flask_socketio import SocketIO, send, emit
 # from flask.ext.sqlalchemy import SQLAlchemy
@@ -9,17 +10,18 @@ import logging
 from logging import Formatter, FileHandler
 from forms import *
 import os
-
+from googletrans import Translator
 #----------------------------------------------------------------------------#
 # App Config.
 #----------------------------------------------------------------------------#
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
+app.debug = True
 # app.config.from_object('config')
 #db = SQLAlchemy(app)
 socketio = SocketIO(app)
-
+translator = Translator()
 # Automatically tear down SQLAlchemy.
 '''
 @app.teardown_request
@@ -49,10 +51,12 @@ def home():
     return render_template('pages/home.html')
 # Error handlers.
 
-@socketio.on('my event')
-def handle_msg(data):
-    print("received message : ", data)
-
+@socketio.on('to_translate_type_event')
+def get_text_to_translate(text):
+    print("received message : ", text['text'])
+    translated_text = translator.translate(text['text'], dest='ar')
+    print(translated_text)
+    socketio.emit('translated_text_is_ready', {'translated_text' : translated_text })
 
 
 #error handling
