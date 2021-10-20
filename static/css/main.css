@@ -33,4 +33,27 @@ a {
  * Various other styles
  ****************************************************************************/
 
-/* Various other styles end */
+/* languages auto complete suggestion */
+.input-group{
+  /* position: relative; */
+}
+.autocomplete-list{
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid rgb(160, 160, 160);
+  /* width: 100px; */
+}
+
+.autocomplete-list{
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.autocomplete-list > div{
+  padding: 2px;
+  margin: 20px;
+}

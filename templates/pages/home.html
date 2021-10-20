@@ -10,20 +10,26 @@
 {% block text_input %}
 <br>
 <div class="container">
-  <div class="row">
+  <div class="row input_group_row">
     <div class="col">
       <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Enter first Language</span>
-        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+        <div>
+        <input id='lang1_input' type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+
       </div>
       <div class="mb-3">
         <textarea class="form-control" id="textarea_to_translate" placeholder="type text to translate" rows="3" onkeyup="on_typing()"></textarea>
       </div>
     </div>
+    
     <div class="col">
       <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Enter second Language</span>
-        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+        <div>
+          <input id='lang2_input' type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
       </div>
       <div class="mb-3">
         <textarea class="form-control" id="textarea_translated_text" rows="3"></textarea>
