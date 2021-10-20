@@ -1,4 +1,4 @@
 
-## Welcome
+## Language Translator App using Google API, SocketIO, Flask
 
-Hello. Want to get started with Flask quickly? Good. You came to the right place. This Flask application framework is pre-configured with **Flask-SQLAlchemy**, **Flask-WTF**, **Fabric**, **Coverage**, and the **Bootstrap** frontend (among others). This will get your Flask app up and running on Heroku or PythonAnywhere quickly. Use this starter, boilerplate for all you new Flask projects. Cheers!
+This Flask application is build with flask boiler-plate produced by real-python. Due to non availability of a translation API, this application is unable to perform translations. Thank you
